@@ -1,0 +1,46 @@
+ ul.pages {
+/* display:block; */
+border:none;
+text-transform:uppercase;
+font-size:1em;
+margin:10px 0 50px;
+padding:0;
+}
+
+ul.pages li {
+list-style:none;
+float:left;
+border:1px solid #ccc;
+text-decoration:none;
+margin:0 5px 0 0;
+padding:5px;
+}
+
+ul.pages li:hover {
+border:1px solid #003f7e;
+}
+
+ul.pages li.pgEmpty {
+border:1px solid #eee;
+color:#eee;
+}
+
+ul.pages li.pgCurrent {
+border:1px solid #003f7e;
+color:#000;
+font-weight:700;
+background-color:#eee;
+}
+
+
+/* 0705 강평선 추가 */
+ul.pages {display:inline-block; width:auto; margin:0 auto 0; height:20px; *zoom:1;}
+ul.pages li {border:0;}
+ul.pages li:hover {border:0; color:#980000;}
+ul.pages li.pgCurrent {border:0;}
+ul.pages li.pgCurrent {color:#980000;}
+ul.pages li.pgNext {margin-top:4px; border:1px solid #ccc; padding:0 2px; background-color:#ddd;}
+ul.pages li.pgEmpty {border:0; padding:1px 3px; color:#aaa;}
+ul.pages li.pgNext:hover {background-color:#cecece; color:#373737;}
+
+ul.pages li.pgEmpty:hover {border:0; padding:1px 3px; color:#aaa; background-color:#ddd;}

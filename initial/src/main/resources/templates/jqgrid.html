@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 위 3개의 메타 태그는 *반드시* head 태그의 처음에 와야합니다; 어떤 다른 콘텐츠들은 반드시 이 태그들 *다음에* 와야 합니다 -->
+    <title>jqgrid</title>
+	<link type="text/css" rel="stylesheet" href="css/jqgrid/ui.jqgrid2.css" />
+	<link type="text/css" rel="stylesheet" href="css/jqgrid/grid.pager.css" />
+	<link type="text/css" rel="Stylesheet" href="css/jqgrid/grid.th.column.css" />
+
+	<!-- ? -->
+<!-- 	<link type="text/css" rel="stylesheet" href="${CONTEXT_PATH}/css/framework/jquery-ui-1.12.0.custom.css" /> -->
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jqgrid/jquery.pager.js"></script>
+	<script type="text/javascript" src="js/jqgrid/i18n/grid.locale-kr.js"></script>
+	<script type="text/javascript" src="js/jqgrid/jquery.jqGrid-5.1.1.js"></script>
+	<script type="text/javascript" src="js/jqgrid/jquery.grid.postext.js"></script>
+	<script type="text/javascript" src="js/jqgrid/jquery.grid.rowData.js"></script>
+
+<!-- <table id="grdList"></table> -->
+<!-- <div id="divList"></div> -->
+
+<div id="divList">
+	<table id="grdList" border="0" cellpadding="0" cellspacing="0" style="width: 100%;"></table>
+	<div id="grdListPager"></div>
+</div>
+
+<hr/>
+
+<table id="grid"></table>
+<div id="pager"></div>
+
+	<script>
+
+	var mydata = [
+			{id:"1",invdate:"2010-05-24",name:"test",note:"note",tax:"10.00",total:"2111.00"} ,
+			{id:"2",invdate:"2010-05-25",name:"test2",note:"note2",tax:"20.00",total:"320.00"},
+			{id:"3",invdate:"2007-09-01",name:"test3",note:"note3",tax:"30.00",total:"430.00"},
+			{id:"4",invdate:"2007-10-04",name:"test",note:"note",tax:"10.00",total:"210.00"},
+			{id:"5",invdate:"2007-10-05",name:"test2",note:"note2",tax:"20.00",total:"320.00"},
+			{id:"6",invdate:"2007-09-06",name:"test3",note:"note3",tax:"30.00",total:"430.00"},
+			{id:"7",invdate:"2007-10-04",name:"test",note:"note",tax:"10.00",total:"210.00"},
+			{id:"8",invdate:"2007-10-03",name:"test2",note:"note2",amount:"300.00",tax:"21.00",total:"320.00"},
+			{id:"9",invdate:"2007-09-01",name:"test3",note:"note3",amount:"400.00",tax:"30.00",total:"430.00"},
+			{id:"11",invdate:"2007-10-01",name:"test",note:"note",amount:"200.00",tax:"10.00",total:"210.00"},
+			{id:"12",invdate:"2007-10-02",name:"test2",note:"note2",amount:"300.00",tax:"20.00",total:"320.00"},
+			{id:"13",invdate:"2007-09-01",name:"test3",note:"note3",amount:"400.00",tax:"30.00",total:"430.00"},
+			{id:"14",invdate:"2007-10-04",name:"test",note:"note",amount:"200.00",tax:"10.00",total:"210.00"},
+			{id:"15",invdate:"2007-10-05",name:"test2",note:"note2",amount:"300.00",tax:"20.00",total:"320.00"},
+			{id:"16",invdate:"2007-09-06",name:"test3",note:"note3",amount:"400.00",tax:"30.00",total:"430.00"},
+			{id:"17",invdate:"2007-10-04",name:"test",note:"note",amount:"200.00",tax:"10.00",total:"210.00"},
+			{id:"18",invdate:"2007-10-03",name:"test2",note:"note2",amount:"300.00",tax:"20.00",total:"320.00"},
+			{id:"19",invdate:"2007-09-01",name:"test3",note:"note3",amount:"400.00",tax:"30.00",total:"430.00"},
+			{id:"21",invdate:"2007-10-01",name:"test",note:"note",amount:"200.00",tax:"10.00",total:"210.00"},
+			{id:"22",invdate:"2007-10-02",name:"test2",note:"note2",amount:"300.00",tax:"20.00",total:"320.00"},
+			{id:"23",invdate:"2007-09-01",name:"test3",note:"note3",amount:"400.00",tax:"30.00",total:"430.00"},
+			{id:"24",invdate:"2007-10-04",name:"test",note:"note",amount:"200.00",tax:"10.00",total:"210.00"},
+			{id:"25",invdate:"2007-10-05",name:"test2",note:"note2",amount:"300.00",tax:"20.00",total:"320.00"},
+			{id:"26",invdate:"2007-09-06",name:"test3",note:"note3",amount:"400.00",tax:"30.00",total:"430.00"},
+			{id:"27",invdate:"2007-10-04",name:"test",note:"note",amount:"200.00",tax:"10.00",total:"210.00"},
+			{id:"28",invdate:"2007-10-03",name:"test2",note:"note2",amount:"300.00",tax:"20.00",total:"320.00"},
+			{id:"29",invdate:"2007-09-01",name:"test3",note:"note3",amount:"400.00",tax:"30.00",total:"430.00"}
+		];
+	$(document).ready(function (){
+
+		jQuery("#grdList").jqGrid({
+			data: mydata,
+			datatype: "local",
+	        regional: "kr",
+			height: 400,
+			rowNum: 30,
+			rowList: [10,20,30],
+			cellLayout: 15,
+		   	colNames:['Inv No','Date', 'Client', 'Amount','Tax','Total','Notes'],
+		   	colModel:[
+		   		{name:'id',index:'id', width:60, sorttype:"int"},
+		   		{name:'invdate',index:'invdate', width:90, sorttype:"date", formatter:"date"},
+		   		{name:'name',index:'name', width:100},
+		   		{name:'amount',index:'amount', width:80, align:"right",sorttype:"float", formatter:"number"},
+		   		{name:'tax',index:'tax', width:80, align:"right",sorttype:"float"},
+		   		{name:'total',index:'total', width:80,align:"right",sorttype:"float"},
+		   		{name:'note',index:'note', width:150, sortable:false}
+		   	],
+		   	pager: "#grdListPager",
+		   	viewrecords: true,
+		   	multiselect: true,
+		   	caption: "Manipulating Array Data",
+		   	loadComplete: function(){
+
+				var grdList = $('#grdList', '#divList');
+		   		var ids = grdList.getDataIDs();
+		   		for(var i in ids) {
+		   			if(i==2){
+		   				$("tr#"+ ids[i] +" > td:eq(0) > input[type=checkbox]", grdList).attr("disabled","disabled");
+// 		   				$("tr#"+ ids[i] +" > td:eq(0) > input[type=checkbox]", grdList).parents().parents().addClass("ui-state-disabled");
+// 		   				$("tr#"+ ids[i] +" > td:eq(0) > input[type=checkbox]", grdList).parents().addClass("ui-state-disabled");
+		   				$("tr#"+ ids[i] +" > td:eq(0) > input[type=checkbox]", grdList).addClass("ui-state-disabled");
+		   			}
+		   		}
+
+		   	},
+		   	onSelectAll: function(aRowids,status){
+// 		   		if(status){
+// 		   			var cbs = $("tr.jqgrow > td > input.cbox:disabled", $("#grdList")[0]);
+// 		   		 	 cbs.removeAttr("checked");
+// 		   		}
+		   	}
+		});
+
+	});
+
+    var dataArray = [
+        {fullname: 'Bob', phone: '232-532-6268'},
+        {fullname: 'Jeff', phone: '365-267-8325'}
+      ];
+
+      $("#grid").jqGrid({
+        datatype: 'local',
+        data: dataArray,
+        colModel: [
+           {name: 'fullname', label : 'Name'},
+           {name: 'phone', label : 'Phone Number'}
+         ],
+         caption : 'Users Grid',
+         height: 'auto',
+         rowNum: 5,
+         pager: '#pager'
+     });
+
+
+     console.info($.jgrid.version);
+
+	</script>
+	<div id="string">---</div>
+
+
+</html>
