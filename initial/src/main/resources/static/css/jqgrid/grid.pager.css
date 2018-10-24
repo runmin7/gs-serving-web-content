@@ -32,8 +32,6 @@ font-weight:700;
 background-color:#eee;
 }
 
-
-/* 0705 강평선 추가 */
 ul.pages {display:inline-block; width:auto; margin:0 auto 0; height:20px; *zoom:1;}
 ul.pages li {border:0;}
 ul.pages li:hover {border:0; color:#980000;}
