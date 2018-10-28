@@ -1,0 +1,37 @@
+.accordion {
+	width:240px;
+	text-align:left;
+	margin:0 auto;
+	font-size:15px;
+	letter-spacing:.05em;
+	line-height:1.4;
+}
+.accordion dt {
+	background-repeat:no-repeat;
+	background-position:12px 50%;
+	padding:10px 0 9px 40px;
+	color:#000000;
+	font-weight:bold;
+}
+.accordion dt.closed {
+	cursor:pointer;
+}
+
+  /* dt*/
+
+.accordion dt.accordion-store {
+	background-color:#F0C05F;
+	background-image:url(imgs/icon_store.png);
+}
+.accordion dt.accordion-store:hover {
+	background-color:#E8A94A;
+}
+.accordion dd {
+	color:#999;
+	padding:0;
+	margin:0;
+	background-color:#F6F6F6
+}
+.accordion dd.closed {
+	display:none;
+}

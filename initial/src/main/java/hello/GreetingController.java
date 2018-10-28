@@ -20,4 +20,17 @@ public class GreetingController {
         return "jqgrid";
     }
 
+    @GetMapping("/keypress")
+    public String keypress(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+        model.addAttribute("name", name);
+        return "keypress";
+    }
+
+    @GetMapping("/accodion")
+    public String accodion(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+        model.addAttribute("name", name);
+        return "accodion";
+    }
+
+
 }

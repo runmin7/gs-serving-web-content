@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- 이 페이지에서 사용되는 CSS -->
+	<link rel="stylesheet" type="text/css" href="css/include/accodion.css" />
+
+</head>
+<body>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="js/include/accodion.js"></script>
+    <p th:text="'Hello, ' + ${name} + '!'" />
+
+	<dl class="accordion">
+		<dt class="accordion-store">item1</dt>
+		<dd>some explanation here ...</dd>
+		<dt class="accordion-store">item2</dt>
+		<dd>some explanation here ...</dd>
+		<dt class="accordion-store">item3</dt>
+		<dd>some explanation here ...</dd>
+	</dl>
+</body>
+</html>

@@ -1,0 +1,14 @@
+[
+	{
+		"name":"minho",
+		"address":"seoul"
+	},
+	{
+		"name":"suho",
+		"address":"seoul2"
+	},
+	{
+		"name":"jeho",
+		"address":"seoul3"
+	}
+]
