@@ -31,6 +31,12 @@ public class GreetingController {
         model.addAttribute("name", name);
         return "accodion";
     }
+    
+    @GetMapping("/css1")
+    public String css1(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+        model.addAttribute("name", name);
+        return "css1";
+    }
 
 
 }
