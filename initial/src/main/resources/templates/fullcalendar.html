@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 위 3개의 메타 태그는 *반드시* head 태그의 처음에 와야합니다; 어떤 다른 콘텐츠들은 반드시 이 태그들 *다음에* 와야 합니다 -->
+    <title>fullcalendar</title>
+		<link type="text/css" rel="stylesheet" href="css/fullcalendar/fullcalendar-2.9.0.css" />
+		<link type="text/css" rel="stylesheet" href="css/fullcalendar/fullcalendar-2.9.0.print.css" media='print' />
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script type="text/javascript" src="js/fullcalendar/moment.min.js"></script>
+<script type="text/javascript" src="js/fullcalendar/fullcalendar-2.9.0.min.js"></script>
+
+
+<div id="divList">
+	<table id="grdList" border="0" cellpadding="0" cellspacing="0" style="width: 100%;"></table>
+	<div id="grdListPager"></div>
+</div>
+
+<hr/>
+
+<table id="grid"></table>
+<div id="pager"></div>
+<!-- <div id='calendar' style="position:relative;width:300px"></div> -->
+<div id="calendar"></div>
+
+	<script>
+		$('#calendar').fullCalendar({
+			contentHeight: "auto",
+			titleFormat : 'YYYY. MM',
+			monthNames	: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+			selectable: true,
+			dayClick : function(date, allDay, jsEvent, view) {
+				$(this).css('background-color', 'rgba(188, 232, 241, 0.3)');
+				$(this).addClass('color-set');
+			}
+		});
+	</script>
+	
+	
+	<div id="string">---</div>
+
+
+</html>
